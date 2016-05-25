@@ -1,0 +1,54 @@
+<!-- index.html -->
+    <!DOCTYPE html>
+    <html ng-app="scotchApp">
+    <head>
+      <!-- SCROLLS -->
+      <!-- load bootstrap and fontawesome via CDN -->
+      <!-- Latest compiled and minified CSS -->
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" /> -->
+
+      <!-- SPELLS -->
+      <!-- load angular and angular route via CDN -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+      <script src="js/script.js"></script>
+
+      <!-- Materialize CSS and JavaScript -->
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+    </head>
+    <body ng-controller="mainController">
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+        <!-- HEADER AND NAVBAR -->
+        <header>
+            <nav>
+                <div class="nav-wrapper">
+                  <a href="#!" class="brand-logo">Logo</a>
+                  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                  <ul class="right hide-on-med-and-down">
+                    <li><a href="#" class="waves-effect waves-light btn">Home</a></li>
+                    <li><a href="#about" class="waves-effect waves-light btn">About</a></li>
+                    <li><a href="#contact" class="waves-effect waves-light btn">Contact</a></li>
+                  </ul>
+                </div>
+              </nav
+        </header>
+        <!-- MAIN CONTENT AND INJECTED VIEWS -->
+        <div id="main">
+          <div ng-view></div>
+            <!-- angular templating -->
+            <!-- this is where content will be injected -->
+        </div>
+
+    </body>
+    </html>
