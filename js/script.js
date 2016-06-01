@@ -29,6 +29,8 @@ scotchApp.config(function($routeProvider) {
 scotchApp.controller('mainController', function($scope) {
     // create a message to display in our view
     $scope.message = 'You are at home!';
+    var pct = '20%'
+    $scope.total_expenses_bar = {'width': pct}
 });
 
 scotchApp.controller('aboutController', function($scope) {
@@ -38,3 +40,4 @@ scotchApp.controller('aboutController', function($scope) {
 scotchApp.controller('contactController', function($scope) {
     $scope.message = 'Contact us! JK. This is just a demo.';
 });
+

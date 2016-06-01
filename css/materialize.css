@@ -4086,7 +4086,7 @@ input[type=range] + .thumb {
 
 nav {
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #3F51B5;
   width: 100%;
   height: 56px;
   line-height: 56px;
@@ -5012,7 +5012,7 @@ button.btn-floating {
 .btn-flat {
   box-shadow: none;
   background-color: transparent;
-  color: #343434;
+  color: #FFFFFF;
   cursor: pointer;
 }
 

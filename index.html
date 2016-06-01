@@ -18,37 +18,68 @@
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+      <!-- Main Stylesheet -->
+      <link type="text/css" rel="stylesheet" href="css/main.css"  media="screen,projection"/>
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+      <!-- Angular Chart -->
+      <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+      <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Food', 200],
+            ['Beverages', 20],
+            ['Commute',  75],
+            ['Clothes', 250],
+            ['Electronics', 70],
+            ['Travel', 250]
+          ]);
+
+          var options = {
+            title: 'My Daily Activities',
+            pieHole: 0.4,
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+          chart.draw(data, options);
+        }
+      </script>
 
     </head>
     <body ng-controller="mainController">
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <!-- <script type="text/javascript" src="js/doughnut.js"></script> -->
+
+      <!-- <script src="bower_components/chartist/dist/chartist.min.js"></script> -->
         <!-- HEADER AND NAVBAR -->
         <header>
             <nav>
                 <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo">Logo</a>
+                  <a href="#!" class="brand-logo">Spendalizer</a>
                   <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                   <ul class="right hide-on-med-and-down">
-                    <li><a href="#" class="waves-effect waves-light btn">Home</a></li>
-                    <li><a href="#about" class="waves-effect waves-light btn">About</a></li>
-                    <li><a href="#contact" class="waves-effect waves-light btn">Contact</a></li>
+                    <li><a href="#" class="waves-effect waves-light btn-flat">Home</a></li>
+                    <li><a href="#about" class="waves-effect waves-light btn-flat">Login/Sign-up</a></li>
+                    <li><a href="#contact" class="waves-effect waves-light btn-flat">Contact</a></li>
                   </ul>
                 </div>
-              </nav
+              </nav>
         </header>
         <!-- MAIN CONTENT AND INJECTED VIEWS -->
-        <div id="main">
+        <div id="main" class="container">
           <div ng-view></div>
             <!-- angular templating -->
             <!-- this is where content will be injected -->
         </div>
-
     </body>
     </html>
