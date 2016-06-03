@@ -174,3 +174,82 @@ categoryBudget(200, "Travel")
 printCategories();
 */
 
+
+//Input: This function gets numOfDays, budgetCut and totalAmount from the user
+//Condition for Input : At any point in time, the user either enters numOfDays, totalAmount or
+//						budgetCut, totalAmount
+//						We need to make sure that the remaining parameter to the function is 0.
+//Example calls : 		bigExpenses(10,0,100);
+//						bigExpenses(0,10,100);
+//Description : Based on the input provided by the user, the function calculates the dialyCut the user is willing
+//				to take and updates the budget object accordingly. 
+function bigExpenses(numOfDays, budgetCut, totalAmount)
+{
+
+	if (numOfDays > 0)
+	{
+		budgetCut = totalAmount/numOfDays;
+		var status = confirm("Your daily cut in the budget to recover for your big expenditure is" + budgetCut + "\n" +
+		                      "Do you want to take this dialy wage cut?" );
+		if (status == true) 
+		{
+			//Updating the dialy, weekly and monthly budget's accordingly			
+			budget.daily = budget.daily - budgetCut;
+			budget.weekly = budget.weekly - (budgetCut * 7);
+			budget.monthly = budget.monthly - (budgetCut * 30);
+
+		}
+		else
+		{
+
+			alert("Big expenditure is not planned! You might end up spending more than you want to :)");
+
+		}
+
+		return;
+	}
+
+	if (budgetCut > 0) 
+	{
+		var dailyBudgetCut = budgetCut/7;
+		numOfDays = totalAmount/dailyBudgetCut;
+
+		var status = confirm("By taking a weekly budget cut of " + budgetCut +"$" + ", you will need " + numOfDays 
+			                 + " days to recover your big expenditure amount! Let's save some money for the mega expense coming up? :)");
+
+		if (status == true) 
+		{
+			budget.daily = budget.daily - dailyBudgetCut;
+			budget.weekly = budget.weekly - (dailyBudgetCut * 7);
+			budget.monthly = budget.monthly - (dailyBudgetCut * 30);
+
+		}
+		else
+		{
+				alert("Hmmmm.. Looks like you haven't planned your big expenditure! Give it a thought.");
+
+		}
+
+	}
+	return;
+
+
+}
+
+
+//Simple test cases bigExpenses()
+//setBudget(100, "daily");
+//printBudget();
+//bigExpenses(10, 0, 1000);
+//printBudget();
+
+//setBudget(100, "daily");
+//printBudget();
+//bigExpenses(10, 0, 10000);
+//printBudget();
+
+//setBudget(100, "daily");
+//printBudget();
+//bigExpenses(0, 100, 1000);
+//printBudget();
+
