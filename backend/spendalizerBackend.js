@@ -6,32 +6,83 @@
 var currentDate = new Date().toLocaleString();
 //var currentDate = new Date().toJSON().slice(0,10);					//This can also be used
 
-var budget =	{
-					'daily'  : 0,
-					'weekly' : 0,
-					'monthly': 0
+var budget = {
+	'daily'  : 0,
+	'weekly' : 0,
+	'monthly': 0
 
-				};
+};
 
-var categories =	{
-						'Food' : 0,
-						'Beverages' : 0,
-						'Clothes' : 0,
-						'Electronics' : 0,
-						'Travel' : 0
 
-					};
+
+var budget_expenses = {
+	'daily'  : 0,
+	'weekly' : 0,
+	'monthly': 0
+
+};
+
+
+var categories = {
+	'Food' : 0,
+	'Beverages' : 0,
+	'Clothes' : 0,
+	'Electronics' : 0,
+	'Travel' : 0
+
+};
+
+
+
+var categories_expenses = {
+	'Food' : 0,
+	'Beverages' : 0,
+	'Clothes' : 0,
+	'Electronics' : 0,
+	'Travel' : 0
+
+};
+
+var categories_expenses = new Array();
+categories_expenses[""]
 
 var expenses =		{	
-						'name': "",
-						'category':"",
-						'amount': 0,
-						'timestamp' : ""
-					}					
+	'name': "",
+	'category':"",
+	'amount': 0,
+	'timestamp' : ""
+}					
 
 
 
 //////////////////////////////////////////////////////////////////
+
+//Function to update after getting an expense
+function set_expense (expenses) {
+	var cat = expenses.category;
+	var amount = expenses.amount;
+	// Set budget_expenses
+	budget_expenses.daily += amount;
+	budget_expenses.weekly += amount;
+	budget_expenses.monthly += amount;
+
+	// Set categories_expenses
+	categories_expenses[cat] += amount; 
+
+	//Alerts (check each budget and send alert on exceeding any budget)
+	if(budget_expenses.daily >= budget.daily){
+		// Send alert
+	}
+	if(budget_expenses.weekly >= budget.weekly){
+		// Send alert
+	}
+	if(budget_expenses.monthly >= budget.monthly){
+		// Send alert
+	}
+
+	// TODO Keep last 10 transactions in a list
+}
+
 //Function to print the Budget object
 function printBudget()
 {
