@@ -13,6 +13,9 @@
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
       <script src="js/script.js"></script>
+      <!-- Chartist -->
+      <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
+
 
       <!-- Materialize CSS and JavaScript -->
       <!--Import Google Icon Font-->
@@ -44,8 +47,9 @@
           ]);
 
           var options = {
-            title: 'My Daily Activities',
-            pieHole: 0.4,
+            'title': 'My Daily Activities',
+            'pieHole': 0.4,
+            'is3D': true
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -58,6 +62,7 @@
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script src="bower_components/chartist/dist/chartist.min.js"></script>
       <!-- <script type="text/javascript" src="js/doughnut.js"></script> -->
 
       <!-- <script src="bower_components/chartist/dist/chartist.min.js"></script> -->
