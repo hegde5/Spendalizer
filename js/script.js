@@ -69,7 +69,7 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
           title: 'My Daily Activities',
           pieHole: 0.4,
         };
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        var chart = new google.visualization.BarChart(document.getElementById('donutchart'));
         chart.draw(data, options);
     }
 });
