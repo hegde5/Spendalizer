@@ -30,7 +30,7 @@ scotchApp.config(function($routeProvider) {
         })
 
         .when('/savings', {
-            templateUrl : 'pages/savings',
+            templateUrl : 'pages/savings.html',
             controller : 'mainController'
         })
 
@@ -59,6 +59,8 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
     'weekly' : 0,
     'monthly': 0
     };
+    console.log("budget variable");
+    console.log($rootScope.budget);
 
     $rootScope.budget_expenses = {
     'daily'  : 0,
@@ -95,7 +97,11 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
 
     $scope.set_expense = function () {
         var cat = $scope.expense_category;
-        var amount = $scope.expenses_amount;
+        console.log("category");
+        console.log(cat);
+        var amount = $scope.expense_amount;
+        console.log("amount");
+        console.log(amount);
         // Set budget_expenses
         $rootScope.budget_expenses.daily += amount;
         $rootScope.budget_expenses.weekly += amount;
@@ -114,6 +120,10 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
         if($rootScope.budget_expenses.monthly >= $rootScope.budget.monthly){
             // Send alert
         }
+        console.log("budget expenses");
+        console.log($rootScope.budget_expenses.daily);
+        console.log($rootScope.budget_expenses.weekly);
+        console.log($rootScope.budget_expenses.monthly);
 
             // TODO Keep last 10 transactions in a list
     }
