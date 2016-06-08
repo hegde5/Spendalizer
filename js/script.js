@@ -34,6 +34,11 @@ scotchApp.config(function($routeProvider) {
             controller : 'mainController'
         })
 
+        .when('/set_budget', {
+            templateUrl : 'pages/set_budget.html',
+            controller : 'mainController'
+        })
+
         .when('/add_expense', {
             templateUrl : 'pages/add_expense.html',
             controller : 'mainController'
