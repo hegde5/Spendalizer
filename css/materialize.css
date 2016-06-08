@@ -4086,7 +4086,8 @@ input[type=range] + .thumb {
 
 nav {
   color: #fff;
-  background-color: #3F51B5;
+  border-color: #0f9d58;
+  background-color: #0f9d58;
   width: 100%;
   height: 56px;
   line-height: 56px;

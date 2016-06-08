@@ -27,6 +27,16 @@ scotchApp.config(function($routeProvider) {
         .when('/login', {
             templateUrl : 'pages/login.html',
             controller : 'loginController'
+        })
+
+        .when('/savings', {
+            templateUrl : 'pages/savings',
+            controller : 'mainController'
+        })
+
+        .when('/add_expense', {
+            templateUrl : 'pages/add_expense.html',
+            controller : 'mainController'
         });
 });
 
@@ -62,14 +72,14 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
           ['Commute',  75],
           ['Clothes', 250],
           ['Electronics', 70],
-          ['Travel', 250]
+          ['Travel', 250],
         ]);
 
         var options = {
           title: 'My Daily Activities',
           pieHole: 0.4,
         };
-        var chart = new google.visualization.BarChart(document.getElementById('donutchart'));
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
     }
 });
