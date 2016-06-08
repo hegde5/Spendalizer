@@ -37,7 +37,14 @@ scotchApp.config(function($routeProvider) {
         .when('/add_expense', {
             templateUrl : 'pages/add_expense.html',
             controller : 'mainController'
+        })
+
+        .when('/big_expense', {
+            templateUrl : 'pages/big_expense.html',
+            controller : 'mainController'
         });
+
+
 });
 
 // create the controller and inject Angular's $scope
@@ -59,8 +66,8 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
     'weekly' : 0,
     'monthly': 0
     };
-    console.log("budget variable");
-    console.log($rootScope.budget);
+    //console.log("budget variable");
+    //console.log($rootScope.budget);
 
     $rootScope.budget_expenses = {
     'daily'  : 0,
@@ -97,11 +104,11 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
 
     $scope.set_expense = function () {
         var cat = $scope.expense_category;
-        console.log("category");
-        console.log(cat);
+        //console.log("category");
+        //console.log(cat);
         var amount = $scope.expense_amount;
-        console.log("amount");
-        console.log(amount);
+        //console.log("amount");
+        //console.log(amount);
         // Set budget_expenses
         $rootScope.budget_expenses.daily += amount;
         $rootScope.budget_expenses.weekly += amount;
@@ -120,10 +127,10 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
         if($rootScope.budget_expenses.monthly >= $rootScope.budget.monthly){
             // Send alert
         }
-        console.log("budget expenses");
-        console.log($rootScope.budget_expenses.daily);
-        console.log($rootScope.budget_expenses.weekly);
-        console.log($rootScope.budget_expenses.monthly);
+        //console.log("budget expenses");
+        //console.log($rootScope.budget_expenses.daily);
+        //console.log($rootScope.budget_expenses.weekly);
+        //console.log($rootScope.budget_expenses.monthly);
 
             // TODO Keep last 10 transactions in a list
     }
@@ -199,7 +206,7 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
     //                      bigExpenses(0,10,100);
     //Description : Based on the input provided by the user, the function calculates the dialyCut the user is willing
     //              to take and updates the budget object accordingly. 
-    $scope.bigExpenses = function (numOfDays, budgetCut, totalAmount) {
+    $scope.bigExpenses = function () {
 
         var numOfDays = $scope.numOfDays;
         var budgetCut = $scope.budgetCut;
