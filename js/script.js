@@ -32,12 +32,206 @@ scotchApp.config(function($routeProvider) {
 
 // create the controller and inject Angular's $scope
 scotchApp.controller('mainController', function($scope, $rootScope) {
-    // create a message to display in our view
+    // create a message to display in our view    
     $scope.message = 'You are at home!';
     var pct = '20%'
     $scope.total_expenses_bar = {'width': pct};
     // Call google chart
     google.charts.setOnLoadCallback($rootScope.drawChart);
+
+    //Global variables and Objects are declared here 
+    //Creating an object called Budget
+    $rootScope.currentDate = new Date().toLocaleString();
+    //$rootScope.currentDate = new Date().toJSON().slice(0,10);                    //This can also be used
+
+    $rootScope.budget = {
+    'daily'  : 0,
+    'weekly' : 0,
+    'monthly': 0
+    };
+
+    $rootScope.budget_expenses = {
+    'daily'  : 0,
+    'weekly' : 0,
+    'monthly': 0
+    };
+
+    $rootScope.categories = {
+    'Food' : 0,
+    'Beverages' : 0,
+    'Clothes' : 0,
+    'Electronics' : 0,
+    'Travel' : 0
+    };
+
+    $rootScope.categories_expenses = {
+    'Food' : 0,
+    'Beverages' : 0,
+    'Clothes' : 0,
+    'Electronics' : 0,
+    'Travel' : 0
+    };
+
+    $rootScope.expenses =    {   
+    'name': "",
+    'category':"",
+    'amount': 0,
+    'timestamp' : ""
+    };
+
+    //////////////////////////////////////////////////////////////////
+
+    //Function to update after getting an expense
+
+    $scope.set_expense = function () {
+        var cat = $scope.expense_category;
+        var amount = $scope.expenses_amount;
+        // Set budget_expenses
+        $rootScope.budget_expenses.daily += amount;
+        $rootScope.budget_expenses.weekly += amount;
+        $rootScope.budget_expenses.monthly += amount;
+
+        // Set categories_expenses
+        $rootScope.categories_expenses[cat] += amount; 
+
+        //Alerts (check each budget and send alert on exceeding any budget)
+        if($rootScope.budget_expenses.daily >= $rootScope.budget.daily){
+            // Send alert
+        }
+        if($rootScope.budget_expenses.weekly >= $rootScope.budget.weekly){
+            // Send alert
+        }
+        if($rootScope.budget_expenses.monthly >= $rootScope.budget.monthly){
+            // Send alert
+        }
+
+            // TODO Keep last 10 transactions in a list
+    }
+
+    //////////////////////////////////////////////////////////////////
+
+    //Input : Function gets the totalBudget and the budgetType(daily, weekly,monthly)from the user.
+    //Description : User can set the budget for the day, week or monthly
+    //              The totalbudget would be split into daily, weekly and monthly budgets.
+    $scope.setBudget = function () {
+
+        var budgetType = $scope.budgetType;
+        var totalbudget = $scope.totalBudget
+
+        if (budgetType == "daily") 
+        {
+                $rootScope.budget.daily = totalBudget;
+                $rootScope.budget.weekly = totalBudget * 7;
+                $rootScope.budget.monthly = totalBudget * 30;
+        }
+        else if (budgetType == "weekly") 
+        {
+                $rootScope.budget.daily = totalBudget / 7;
+                $rootScope.budget.weekly = totalBudget;
+                $rootScope.budget.monthly = totalBudget * 4;               //Can be multiplied by 4.4
+        }
+        else
+        {
+                $rootScope.budget.daily = totalBudget / 30;
+                $rootScope.budget.weekly = totalBudget / 4;
+                $rootScope.budget.monthly = totalBudget;
+        }
+    }
+
+     //////////////////////////////////////////////////////////////////       
+
+    //Function that sets the budget entered by the user for a category to the corresponding category in the
+    //categories object
+    $scope.categoryBudget = function () {
+
+        var catBudget = $scope.catBudget;
+        var categoryType = $scope.categoryType;
+
+        if (categoryType == "Food")
+        {
+            $rootScope.categories.Food = catBudget;
+        }
+        else if(categoryType == "Beverages")
+        {
+            $rootScope.categories.Beverages = catBudget;
+        }
+        else if(categoryType == "Clothes")
+        {
+            $rootScope.categories.Clothes = catBudget; 
+        }
+        else if(categoryType == "Electronics")
+        {
+            $rootScope.categories.Electronics = catBudget;
+        }
+        else
+        {
+            $rootScope.categories.Travel = catBudget;
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////       
+
+    //Input: This function gets numOfDays, budgetCut and totalAmount from the user
+    //Condition for Input : At any point in time, the user either enters numOfDays, totalAmount or
+    //                      budgetCut, totalAmount
+    //                      We need to make sure that the remaining parameter to the function is 0.
+    //Example calls :       bigExpenses(10,0,100);
+    //                      bigExpenses(0,10,100);
+    //Description : Based on the input provided by the user, the function calculates the dialyCut the user is willing
+    //              to take and updates the budget object accordingly. 
+    $scope.bigExpenses = function (numOfDays, budgetCut, totalAmount) {
+
+        var numOfDays = $scope.numOfDays;
+        var budgetCut = $scope.budgetCut;
+        var totalAmount = $scope.totalAmount;
+
+        if (numOfDays > 0)
+        {
+            budgetCut = totalAmount/numOfDays;
+            var status = confirm("Your daily cut in the budget to recover for your big expenditure is" + budgetCut + "\n" +
+                                  "Do you want to take this dialy wage cut?" );
+            if (status == true) 
+            {
+                //Updating the dialy, weekly and monthly budget's accordingly           
+                $rootScope.budget.daily = $rootScope.budget.daily - budgetCut;
+                $rootScope.budget.weekly = $rootScope.budget.weekly - (budgetCut * 7);
+                $rootScope.budget.monthly = $rootScope.budget.monthly - (budgetCut * 30);
+
+            }
+            else
+            {
+
+                alert("Big expenditure is not planned! You might end up spending more than you want to :)");
+
+            }
+
+            return;
+        }
+
+        if (budgetCut > 0) 
+        {
+            var dailyBudgetCut = budgetCut/7;
+            numOfDays = totalAmount/dailyBudgetCut;
+
+            var status = confirm("By taking a weekly budget cut of " + budgetCut +"$" + ", you will need " + numOfDays 
+                                 + " days to recover your big expenditure amount! Let's save some money for the mega expense coming up? :)");
+
+            if (status == true) 
+            {
+                $rootScope.budget.daily = $rootScope.budget.daily - dailyBudgetCut;
+                $rootScope.budget.weekly = $rootScope.budget.weekly - (dailyBudgetCut * 7);
+                $rootScope.budget.monthly = $rootScope.budget.monthly - (dailyBudgetCut * 30);
+
+            }
+            else
+            {
+                    alert("Hmmmm.. Looks like you haven't planned your big expenditure! Give it a thought.");
+
+            }
+        }
+    }
+
+
     
 });
 

@@ -59,7 +59,7 @@ var expenses =		{
 
 //Function to update after getting an expense
 $scope.set_expense = function (expenses) {
-	var cat = expenses.category;
+	var cat = $scope.expense_category;
 	var amount = expenses.amount;
 	// Set budget_expenses
 	budget_expenses.daily += amount;
