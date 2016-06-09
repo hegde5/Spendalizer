@@ -58,8 +58,6 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
     $scope.message = 'You are at home!';
     var pct = '20%'
     $scope.total_expenses_bar = {'width': pct};
-    // Call google chart
-    google.charts.setOnLoadCallback($rootScope.drawChart);
 
     //Global variables and Objects are declared here 
     //Creating an object called Budget
@@ -132,10 +130,10 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
         if($rootScope.budget_expenses.monthly >= $rootScope.budget.monthly){
             // Send alert
         }
-        //console.log("budget expenses");
-        //console.log($rootScope.budget_expenses.daily);
-        //console.log($rootScope.budget_expenses.weekly);
-        //console.log($rootScope.budget_expenses.monthly);
+        console.log("budget expenses");
+        console.log($rootScope.budget_expenses.daily);
+        console.log($rootScope.budget_expenses.weekly);
+        console.log($rootScope.budget_expenses.monthly);
 
             // TODO Keep last 10 transactions in a list
     }
@@ -146,9 +144,10 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
     //Description : User can set the budget for the day, week or monthly
     //              The totalbudget would be split into daily, weekly and monthly budgets.
     $scope.setBudget = function () {
-
+        console.log("setting budget");
+        console.log($scope.totalBudget)
         var budgetType = $scope.budgetType;
-        var totalbudget = $scope.totalBudget
+        var totalBudget = $scope.totalBudget;
 
         if (budgetType == "daily") 
         {
@@ -168,6 +167,10 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
                 $rootScope.budget.weekly = totalBudget / 4;
                 $rootScope.budget.monthly = totalBudget;
         }
+        console.log("budgets");
+        console.log($scope.budget.daily);
+        console.log($scope.budget.weekly);
+        console.log($scope.budget.monthly);
     }
 
      //////////////////////////////////////////////////////////////////       
@@ -298,6 +301,9 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
     }
+    // Call google chart
+    google.charts.setOnLoadCallback($rootScope.drawChart);
+    
 });
 
 
