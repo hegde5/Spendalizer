@@ -323,6 +323,8 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
     // Call google chart
     google.charts.setOnLoadCallback($rootScope.drawChart);
     google.charts.setOnLoadCallback($rootScope.drawAreaChart);
+    google.charts.setOnLoadCallback($rootScope.drawPieChartWeeklyExpense);
+    google.charts.setOnLoadCallback($rootScope.drawAreaChartMonthly);
 
     
     $rootScope.drawAreaChart = function(){
@@ -348,7 +350,48 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
 
         chart.draw(data, options);
       }
-      
+
+
+      $rootScope.drawPieChartWeeklyExpense = function(){     
+        var data = google.visualization.arrayToDataTable([
+          ['Categories', 'Weekly Expenses'],
+          ['Food', 800],
+          ['Beverages', 100],
+          ['Commute',  200],
+          ['Clothes', 50],
+          ['Electronics', 150],
+          ['Travel', 75],
+        ]);
+
+        var options = {
+            'chartArea': {'width': '100%', 'height': '80%'},
+            pieHole: 0.4,
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('donutchartForWeeklyExpense'));
+        chart.draw(data, options);
+    }   
+
+
+    $rootScope.drawAreaChartMonthly = function(){
+        var data = google.visualization.arrayToDataTable([
+          ['Week',  'Expense'],
+          ['First Week', 10],
+          ['Second Week', 30],
+          ['Third Week', 50],
+          ['Fourth Week', 40],          
+        ]);
+
+        var options = {
+          vAxis: {title: 'Expenses'},
+          'chartArea': {'width': '100%', 'height': '70%'},
+          'legend': {'position': 'bottom'},
+          isStacked: true
+        };
+
+        var chart = new google.visualization.SteppedAreaChart(document.getElementById('SteppedAreaChartMonthly'));
+
+        chart.draw(data, options);
+      }
     
 });
 
