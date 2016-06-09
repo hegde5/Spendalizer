@@ -54,6 +54,25 @@ scotchApp.config(function($routeProvider) {
 
 // create the controller and inject Angular's $scope
 scotchApp.controller('mainController', function($scope, $rootScope) {
+    // Jquery for modals
+    
+
+    $scope.$on('$routeChangeSuccess', function () {
+      // run some code to do your animations
+      $(document).ready(function(){
+          // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+          $('.modal-trigger').leanModal();
+      });
+
+      $(document).ready(function(){
+          $('.tooltipped').tooltip({delay: 50});
+      });
+
+      $(document).ready(function() {
+          $('select').material_select();
+      });
+    });
+
     // create a message to display in our view    
     $scope.message = 'You are at home!';
     var pct = '20%'

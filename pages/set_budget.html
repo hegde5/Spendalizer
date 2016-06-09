@@ -13,17 +13,19 @@
 	          <div class="row">
 	          	<form class="col s12">
 	          	  <div class="row">
-
-	          	    <div class="input-field col s4">
-	          	      <input id="first_name" ng-model="budgetType" type="text" class="validate">
-	          	      <label for="first_name">Budget Type</label>
-	          	    </div>
-	          	  </div>
-	          	  <div class="row">
-	          	    <div class="input-field col s5">
-	          	      <input id="number" ng-model="totalBudget" type="number" class="validate">
-	          	      <label for="number">Total Budget</label>
-	          	    </div>
+					<div class="input-field col s4">
+					    <select>
+					      <option value="" disabled selected>Choose your option</option>
+					      <option value="1">Daily</option>
+					      <option value="2">Weekly</option>
+					      <option value="3">Monthly</option>
+					    </select>
+					    <label>Budget Type</label>
+					  </div>
+					<div class="input-field col s4">
+					  <input id="number" ng-model="totalBudget" type="number" class="validate">
+					  <label for="number">Total Budget</label>
+					</div>
 	          	  </div>
 	          	  <div class="row"></div>
 	          	  <a ng-click="setBudget()" class="waves-effect waves-light btn">Set</a>
