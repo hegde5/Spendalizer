@@ -71,3 +71,7 @@ dir.col.s6.m6 {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+body {
+  background: url(background-1.jpeg);
+}

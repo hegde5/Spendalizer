@@ -32,7 +32,19 @@
 	          	    </div>	          	   
 
 	          	  </div>	          	  
-	          	  <a ng-click="bigExpenses()" class="waves-effect waves-light btn">Add</a>
+	          	  <!-- Modal Trigger -->
+	          	  <button data-target="modal1" class="btn modal-trigger">Add</button>
+	          	  <!-- Modal Structure -->
+	          	  <div id="modal1" class="modal">
+	          	  	<div class="modal-content">
+	          	  		<h4>Planning Big Expense</h4>
+	          	  		<p>Hit confirm to plan this big expense and take a cut in your budget!</p>
+	          	  	</div>
+	          	  	<div class="modal-footer">
+	          	  		<a href="#" ng-click="set_expense()" class="modal-action modal-close waves-effect waves-green btn-flat" style="color:#26a69a;">Confirm</a>
+	          	  		<a class="modal-action modal-close waves-effect waves-green btn-flat" style="color:#26a69a;">Cancel</a>
+	          	  	</div>
+	          	  </div>
 	          	</form>
 	          </div>
 	        </div>

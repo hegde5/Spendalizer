@@ -34,7 +34,19 @@
 	          	      <label for="date"></label>
 	          	    </div>
 	          	  </div>
-	          	  <a ng-click="set_expense()" class="waves-effect waves-light btn">Add</a>
+	          	  <!-- Modal Trigger -->
+	          	  <button data-target="modal1" class="btn modal-trigger">Set</button>
+	          	  <!-- Modal Structure -->
+	          	  <div id="modal1" class="modal">
+	          	  	<div class="modal-content">
+	          	  		<h4>Adding Expense</h4>
+	          	  		<p>Adding {{expense_amount}}$ into {{expense_category}} for {{expense_name}}</p>
+	          	  	</div>
+	          	  	<div class="modal-footer">
+	          	  		<a href="#" ng-click="set_expense()" class="modal-action modal-close waves-effect waves-green btn-flat" style="color:black;">Confirm</a>
+	          	  		<a class="modal-action modal-close waves-effect waves-green btn-flat" style="color:black;">Cancel</a>
+	          	  	</div>
+	          	  </div>
 	          	</form>
 	          </div>
 	        </div>

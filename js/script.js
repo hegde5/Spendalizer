@@ -59,18 +59,22 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
 
     $scope.$on('$routeChangeSuccess', function () {
       // run some code to do your animations
-      $(document).ready(function(){
+        $(document).ready(function(){
           // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-          $('.modal-trigger').leanModal();
-      });
-
-      $(document).ready(function(){
-          $('.tooltipped').tooltip({delay: 50});
-      });
-
-      $(document).ready(function() {
-          $('select').material_select();
-      });
+            $('.modal-trigger').leanModal();
+        });
+        // Tooltip animation
+        $(document).ready(function(){
+            $('.tooltipped').tooltip({delay: 50});
+        });
+        // select animation
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+        // Parallax background effect
+        $(document).ready(function(){
+            $('.parallax').parallax();
+        });
     });
 
     // create a message to display in our view    
@@ -302,6 +306,10 @@ scotchApp.controller('loginController', function ($scope) {
 });
 
 scotchApp.controller('chart-controller', function ($scope, $rootScope) {
+    google.charts.setOnLoadCallback($rootScope.drawAreaChartMonthly);
+    google.charts.setOnLoadCallback($rootScope.drawChart);
+    google.charts.setOnLoadCallback($rootScope.drawPieChartWeeklyExpense);
+    google.charts.setOnLoadCallback($rootScope.drawAreaChart);
     $rootScope.drawChart = function () {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
@@ -320,13 +328,9 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
     }
-    // Call google chart
-    google.charts.setOnLoadCallback($rootScope.drawChart);
-    google.charts.setOnLoadCallback($rootScope.drawAreaChart);
-    google.charts.setOnLoadCallback($rootScope.drawPieChartWeeklyExpense);
-    google.charts.setOnLoadCallback($rootScope.drawAreaChartMonthly);
 
     
+
     $rootScope.drawAreaChart = function(){
         var data = google.visualization.arrayToDataTable([
           ['Days',  'Expense'],
@@ -347,10 +351,9 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
         };
 
         var chart = new google.visualization.SteppedAreaChart(document.getElementById('SteppedAreaChart'));
-
         chart.draw(data, options);
       }
-
+      
 
       $rootScope.drawPieChartWeeklyExpense = function(){     
         var data = google.visualization.arrayToDataTable([
@@ -371,6 +374,7 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
         chart.draw(data, options);
     }   
 
+    
 
     $rootScope.drawAreaChartMonthly = function(){
         var data = google.visualization.arrayToDataTable([
@@ -392,7 +396,7 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
 
         chart.draw(data, options);
       }
-    
+    // Call google chart
 });
 
 
