@@ -303,6 +303,32 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
     }
     // Call google chart
     google.charts.setOnLoadCallback($rootScope.drawChart);
+    google.charts.setOnLoadCallback($rootScope.drawAreaChart);
+
+    
+    $rootScope.drawAreaChart = function(){
+        var data = google.visualization.arrayToDataTable([
+          ['Days',  'Expense'],
+          ['Mon', 10],
+          ['Tue', 30],
+          ['Wed', 50],
+          ['Thu', 40],
+          ['Fri', 20],
+          ['Sat', 10],
+          ['Sun', 50]
+        ]);
+
+        var options = {
+          title: 'My Weekly Expenses',
+          vAxis: {title: 'Expenses'},
+          isStacked: true
+        };
+
+        var chart = new google.visualization.SteppedAreaChart(document.getElementById('SteppedAreaChart'));
+
+        chart.draw(data, options);
+      }
+      
     
 });
 
