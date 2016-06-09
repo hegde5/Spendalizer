@@ -295,8 +295,8 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
         ]);
 
         var options = {
-          title: 'My Daily Activities',
-          pieHole: 0.4,
+            'chartArea': {'width': '100%', 'height': '80%'},
+            pieHole: 0.4,
         };
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
@@ -319,8 +319,9 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
         ]);
 
         var options = {
-          title: 'My Weekly Expenses',
           vAxis: {title: 'Expenses'},
+          'chartArea': {'width': '100%', 'height': '70%'},
+          'legend': {'position': 'bottom'},
           isStacked: true
         };
 

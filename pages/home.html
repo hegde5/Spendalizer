@@ -1,10 +1,11 @@
 <div class="jumbotron text-center">
-	<script src="js/modal.js" type="text/javascript"></script>
-	<link type="text/css" rel="stylesheet" href="css/modal.css"/>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <!-- <h1>Expenses Breakdown</h1> -->
     <!-- <div class="row" id="donutchart" style="width: 900px; height: 500px;"></div> -->
     <!-- <p>{{ message }}</p> -->
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
     <div class="row">
     	
     </div>
@@ -12,13 +13,12 @@
     	
     </div>
     <div class="row">
-	    <div class="col s12 m12">
+	    <div class="col s6 m6" ng-controller="chart-controller">
 	      <div class="card">
 	        <div class="card-content">
 	          <span class="card-title">Spent This Month</span>
-	          <div class="row" ng-controller="chart-controller">
-	          	<div id="donutchart" style="width: 600px; height: 500px;"></div>
-	          	<div id="SteppedAreaChart" style="width: 600px; height: 500px;"></div>
+	          <div class="row">
+	          	<div id="donutchart" style="width: 100%; height: 100%;"></div>
 	          </div>	          
 	        </div>
 	        <div class="card-action">
@@ -26,14 +26,27 @@
 	        </div>
 	      </div>
 	    </div>
+	    <dir class="col s6 m6" style="margin-top=0px;">
+	    	<div class="card">
+	    	  <div class="card-content">
+	    	    <span class="card-title">Spent This Week</span>
+	    	    <div class="row">
+	    	    	<div id="SteppedAreaChart" style="width: 100%; height: 100%;"></div>
+	    	    </div>	          
+	    	  </div>
+	    	  <div class="card-action">
+	    	    <a href="#">More Details</a>
+	    	  </div>
+	    	</div>
+	    </dir>
 	</div>
     <div class="row">
-	    <div class="col s12 m12">
+	    <div class="col s6 m6">
 	      <div class="card">
 	        <div class="card-content">
-	          <span class="card-title">Spent This Week</span>
+	          <span class="card-title">Budget used up this week</span>
 	          <!-- <div class="row" id="donutchart" style="width: 900px; height: 500px;"></div> -->
-	          <div class="progress" style="width: 50%">
+	          <div class="progress" style="width: 90%">
 	                <div class="determinate" style="width:70%"></div>
 	          </div>
 	        </div>
@@ -42,14 +55,12 @@
 	        </div>
 	      </div>
 	    </div>
-	</div>
-    <div class="row">
-	    <div class="col s12 m12">
+	    <div class="col s6 m6">
 	      <div class="card">
 	        <div class="card-content">
-	          <span class="card-title">Spent Today</span>
-	          <div class="progress" style="width: 50%">
-	                <div class="determinate" style="width:70%"></div>
+	          <span class="card-title">Budget used up this month</span>
+	          <div class="progress" style="width: 90%">
+	                <div class="determinate" style="width:50%"></div>
 	          </div>
 	        </div>
 	        <div class="card-action">
@@ -63,9 +74,17 @@
 	      <i class="material-icons">add</i>
 	    </a>
 	    <ul>
-	      <li><a href="#big_expense "class="btn-floating red"><i class="material-icons">insert_chart</i>Big Expense</a></li>
+	      <li><a href="#big_expense" class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Big Expense"><i class="material-icons">insert_chart</i>Big Expense</a></li>
 	      <li><a href="#add_expense" class="btn-floating green"><i class="material-icons">attach_money</i>Add Expense</a></li>
 	      <li><a href="#set_budget" class="btn-floating green"><i class="material-icons">assignment</i>Set Budget</a></li>
+	      <li><a href="#" class="btn-floating red tooltipped" data-position="left" data-tooltip="Reply">
+          <i class="material-icons">reply</i></a></li>
 	    </ul>
+	    <script type="text/javascript">
+	    	$(document).ready(function(){
+	    	    $('.tooltipped').tooltip({delay: 50});
+	    	  });
+	    </script>
 	  </div>
+	  
 </div>

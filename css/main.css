@@ -61,3 +61,13 @@
   font-size: 55px;
 }
 .chart path:hover { opacity: 0.65; }
+
+dir.col.s4.m4 {
+    margin-top: 0px;
+}
+
+
+dir.col.s6.m6 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
