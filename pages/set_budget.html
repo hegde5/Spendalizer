@@ -14,7 +14,7 @@
 	          	<form class="col s12">
 	          	  <div class="row">
 					<div class="input-field col s4">
-					    <select>
+					    <select name="singleSelect" ng-model="budgetType">
 					      <option value="" disabled selected>Choose your option</option>
 					      <option value="1">Daily</option>
 					      <option value="2">Weekly</option>
@@ -28,7 +28,20 @@
 					</div>
 	          	  </div>
 	          	  <div class="row"></div>
-	          	  <a ng-click="setBudget()" class="waves-effect waves-light btn">Set</a>
+	          	  <!-- Modal Trigger -->
+	          	  <button data-target="modal1" class="btn modal-trigger">Set</button>
+	          	  <!-- Modal Structure -->
+	          	  <div id="modal1" class="modal">
+	          	  	<div class="modal-content">
+	          	  		<h4>Modal Header</h4>
+	          	  		<p>A bunch of text</p>
+	          	  	</div>
+	          	  	<div class="modal-footer">
+	          	  		<a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+	          	  		<a href="#" ng-click="setBudget()" class="modal-action modal-close waves-effect waves-green btn-flat" style="color:black;">Confirm</a>
+	          	  		<a class="modal-action modal-close waves-effect waves-green btn-flat" style="color:black;">Cancel</a>
+	          	  	</div>
+	          	  </div>
 	          	</form>
 	          </div>
 	        </div>
