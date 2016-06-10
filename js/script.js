@@ -302,6 +302,38 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
     }
 
 
+    $scope.SendAlerts =  function(){
+
+            console.log("Function SendAlerts Called");
+            $.ajax({
+            /*
+            headers:{
+                        "Accept":"application/json",
+                        "Content-Type" : "application/x-www-form-urlencoded",              
+            },*/
+            //"Content-Type" : "application/x-www-form-urlencoded",
+            type: 'post',
+            url: "http://textbelt.com/text",
+            //processData: false,
+            //data: "number=6173730582 message=This is a test message",         
+            data: {"number":"6173730582","message":"This is a test message!"},
+            //data: ,
+
+            success:function(response)
+            {
+                console.log("Success!!!!");
+            },
+
+            error : function(xhr, status, error)
+            {
+                console.log("Status of error message" + status + "Error is" + error);
+            }   
+
+        });
+
+
+    }
+
     
 });
 
@@ -318,7 +350,7 @@ scotchApp.controller('loginController', function ($scope) {
 });
 
 scotchApp.controller('savings-chart-controller', function ($scope, $rootScope) {
-    console.log("error is here");
+    //console.log("error is here");
     google.charts.setOnLoadCallback($rootScope.savings_monthly);
     google.charts.setOnLoadCallback($rootScope.savings_weekly);
     $rootScope.savings_monthly = function () {
