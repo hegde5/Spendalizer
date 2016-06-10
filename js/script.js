@@ -25,7 +25,7 @@ scotchApp.config(function($routeProvider) {
         })
 
         // route for the landing page
-        .when('/', {
+        .when('/landing', {
             templateUrl : 'pages/landing.html',
             controller  : 'mainController'
         })
@@ -64,6 +64,11 @@ scotchApp.config(function($routeProvider) {
 
         .when('/big_expense', {
             templateUrl : 'pages/big_expense.html',
+            controller : 'mainController'
+        })
+
+        .when('/ratings', {
+            templateUrl : 'pages/ratings.html',
             controller : 'mainController'
         });
 
