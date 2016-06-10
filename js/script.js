@@ -388,6 +388,7 @@ scotchApp.controller('savings-chart-controller', function ($scope, $rootScope) {
         var options = {
             'chartArea': {'width': '100%', 'height': '80%'},
             pieHole: 0.4,
+            'legend': {'position': 'bottom'},
         };
         var chart = new google.visualization.PieChart(document.getElementById('savingsMonthly'));
         chart.draw(data, options);
@@ -406,6 +407,7 @@ scotchApp.controller('savings-chart-controller', function ($scope, $rootScope) {
         var options = {
             'chartArea': {'width': '100%', 'height': '80%'},
             pieHole: 0.4,
+            'legend': {'position': 'bottom'},
         };
         var chart = new google.visualization.PieChart(document.getElementById('savingsWeekly'));
         chart.draw(data, options);
@@ -431,6 +433,7 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
         var options = {
             'chartArea': {'width': '100%', 'height': '80%'},
             pieHole: 0.4,
+            'legend': {'position': 'bottom'},
         };
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
@@ -476,6 +479,7 @@ scotchApp.controller('chart-controller', function ($scope, $rootScope) {
         var options = {
             'chartArea': {'width': '100%', 'height': '80%'},
             pieHole: 0.4,
+            'legend': {'position': 'bottom'},
         };
         var chart = new google.visualization.PieChart(document.getElementById('donutchartForWeeklyExpense'));
         chart.draw(data, options);
