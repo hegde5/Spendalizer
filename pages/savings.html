@@ -1,4 +1,7 @@
  <div class="jumbotron text-center">
+ 	<script type="text/javascript">
+ 		google.charts.load("current", {packages:["corechart"]});
+ 	</script>
 
     <div class="row">
     	
@@ -6,46 +9,194 @@
     <div class="row">
     	
     </div>
-    <div class="row">
-	    <div class="col s6 m6" ng-controller="chart-controller">
+    <div class="row" ng-controller="savings-chart-controller">
+	    <div class="col s6 m6">
 	      <div class="card">
 	        <div class="card-content">
-	          <span class="card-title">Spent This Month</span>
+	          <span class="card-title activator">Saved This Month</span>
 	          <div class="row">
-	          	<div id="donutchart" style="width: 100%; height: 100%;"></div>
+	          	<div id="savingsMonthly" style="width: 100%; height: 100%;"></div>
 	          </div>	          
 	        </div>
 	        <div class="card-action">
-	          <a href="#">More Details</a>
+	          <a href="" class="activator">More Details</a>
 	        </div>
+        	<div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Spending in each category<i class="material-icons right">close</i></span>
+                <p>Food : 205$</p>
+                <p>Beverages : 50$</p>
+                <p>Commute : 50$</p>
+                <p>Clothes : 50$</p>
+                <p>Electronics : 50$</p>
+                <p>Travel : 50$</p>
+           </div>
 	      </div>
 	    </div>
-	    <dir class="col s6 m6" ng-controller="chart-controller">
+	    <div class="col s6 m6">
 	    	<div class="card">
-	    	  <div class="card-content">
-	    	  	<span class="card-title">Spent This Month</span>
-	    	  	<div class="row">
-	    	  		<div id="SteppedAreaChartMonthly" style="width: 100%; height: 100%;"></div>
-	    	  	</div>          
-	    	  </div>
-	    	  <div class="card-action">
-	    	    <a href="#">More Details</a>
-	    	  </div>
+		    	<div class="card-content">
+		    		<span class="card-title activator">Saved This Week</span>
+		    	  	<div class="row">
+		    	  		<div id="savingsWeekly" style="width: 100%; height: 100%;"></div>
+		    		</div>          
+	    	  	</div>
+	    	  	<div class="card-action">
+	    	    	<a href="" class="activator">More Details</a>
+	    	  	</div>
+	    		<div class="card-reveal">
+	    	        <span class="card-title grey-text text-darken-4">Spending in each category<i class="material-icons right">close</i></span>
+	    	        <p>Food : 205$</p>
+	    	        <p>Beverages : 50$</p>
+	    	        <p>Commute : 50$</p>
+	    	        <p>Clothes : 50$</p>
+	    	        <p>Electronics : 50$</p>
+	    	        <p>Travel : 50$</p>
+	    	   </div>
 	    	</div>
-	    </dir>
-	    
+	    </div>
 	</div>
 	<div class="row">
-		<!-- Modal Trigger -->
-		<button data-target="modal1" class="btn modal-trigger">Modal</button>
-		<!-- Modal Structure -->
-		<div id="modal1" class="modal">
-			<div class="modal-content">
-				<h4>Modal Header</h4>
-				<p>A bunch of text</p>
+		<div class="col s12 m12">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title activator">Put money into savings account</span>
+					<p>Saved from Last Month: 600$</p>
+		          	<form>
+		          	  	<div class="row">
+			          	    <div class="input-field col s4">
+			          	      <input id="total_amount" ng-model="totalAmount" type="text" class="validate">
+			          	      <label for="total_amount">Total Amount</label>
+			          	    </div>
+			          	    <div class="input-field col s4">
+			          	        <select name="singleSelect" ng-model="budgetType">
+			          	        	<option value="" disabled selected>Choose Account</option>
+			          	        	<option value="1">Savings Account 1</option>
+			          	        	<option value="2">Saving Account 2</option>
+			          	        	<option value="3">Savings Account 3</option>
+			          	        </select>
+			          	        
+			          	    </div>
+		          	    </div>          	  
+		          	  	<!-- Modal Trigger -->
+		          	  	<button data-target="modal1" class="btn modal-trigger">Add</button>
+		          	  	<!-- Modal Structure -->
+		          	  	<div id="modal1" class="modal">
+		          	  		<div class="modal-content">
+		          	  			<h4>Planning Big Expense</h4>
+		          	  			<p>Hit confirm to plan this big expense and take a cut in your budget!</p>
+		          	  		</div>
+		          	  		<div class="modal-footer">
+		          	  			<a href="#" ng-click="set_expense()" class="modal-action modal-close waves-effect waves-green btn-flat" style="color:#26a69a;">Confirm</a>
+		          	  			<a class="modal-action modal-close waves-effect waves-green btn-flat" style="color:#26a69a;">Cancel</a>
+		          	  		</div>
+		          	  	</div>
+		          	</form>
+				</div>
+				<div class="card-action">
+				  	<a href="" class="activator">More Details</a>
+				</div>
+				<div class="card-reveal">
+			        <span class="card-title grey-text text-darken-4">Sending to savings account<i class="material-icons right">close</i></span>
+			        <p>The money you worked so hard to save needs to be set aside, send it to your savings account!</p>
+			   </div>
 			</div>
-			<div class="modal-footer">
-				<a href="#" class=" modal-action modal-close waves-effect waves-teal btn-flat" style="color: black;">Agree</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m12">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title activator">Put money into a 401K account</span>
+					<p>Saved from Last Month: 600$</p>
+		          	<form>
+		          	  	<div class="row">
+			          	    <div class="input-field col s4">
+			          	      <input id="total_amount" ng-model="totalAmount" type="text" class="validate">
+			          	      <label for="total_amount">Total Amount</label>
+			          	    </div>
+			          	    <div class="input-field col s4">
+			          	        <select name="singleSelect" ng-model="budgetType">
+			          	        	<option value="" disabled selected>Choose Account</option>
+			          	        	<option value="1">401K Account 1</option>
+			          	        	<option value="2">401K Account 2</option>
+			          	        	<option value="3">401K Account 3</option>
+			          	        </select>
+			          	        
+			          	    </div>
+		          	    </div>          	  
+		          	  	<!-- Modal Trigger -->
+		          	  	<button data-target="modal1" class="btn modal-trigger">Add</button>
+		          	  	<!-- Modal Structure -->
+		          	  	<div id="modal1" class="modal">
+		          	  		<div class="modal-content">
+		          	  			<h4>Planning Big Expense</h4>
+		          	  			<p>Hit confirm to plan this big expense and take a cut in your budget!</p>
+		          	  		</div>
+		          	  		<div class="modal-footer">
+		          	  			<a href="#" ng-click="set_expense()" class="modal-action modal-close waves-effect waves-green btn-flat" style="color:#26a69a;">Confirm</a>
+		          	  			<a class="modal-action modal-close waves-effect waves-green btn-flat" style="color:#26a69a;">Cancel</a>
+		          	  		</div>
+		          	  	</div>
+		          	</form>
+				</div>
+				<div class="card-action">
+				  	<a href="" class="activator">More Details</a>
+				</div>
+				<div class="card-reveal">
+			        <span class="card-title grey-text text-darken-4">Sending to 401K account<i class="material-icons right">close</i></span>
+			        <p>Make use of the company's policy to match a part of your savings, put your savings into your 401K and keep it tax free!</p>
+			   </div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m12">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title activator">Mutual Funds</span>
+					<p>Mutual funds can be an effective part of your investment portfolio, whether you have a short time horizon or want to build wealth over time. When you invest in a mutual fund, you have the potential to benefit from "strength in numbers" as you join thousands of other people with similar financial goals whose money the investment company has pooled to invest in a portfolio of stocks, bonds or other securities. Investments in the fund are selected and monitored by a professional portfolio manager who decides when to buy and sell stocks, bonds or other securities, based on the fund’s objective.</p>
+				</div>
+				<div class="card-action">
+				  	<a href="" class="activator">More Details</a>
+				</div>
+				<div class="card-reveal">
+			        <span class="card-title grey-text text-darken-4">More on Mutual Funds<i class="material-icons right">close</i></span>
+			        <p>Make use of the company's policy to match a part of your savings, put your savings into your 401K and keep it tax free!</p>
+			   	</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m12">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title activator">Individual Retirement Account (IRA)</span>
+					<p>If you’re looking for a tax-advantaged way to save for retirement and build the future you envision, you may want to consider an individual retirement account (IRA). Compared to 401(k)s, which are usually provided by an employer, IRAs are set up by individuals through a financial services provider, such as an investment firm or bank. You can choose from a number of investment options within your IRA including mutual funds, individual securities and annuities. There are two common types of IRAs: traditional IRAs and Roth IRAs, which have different eligibility requirements, contribution caps and tax advantages.</p>
+				</div>
+				<div class="card-action">
+				  	<a href="" class="activator">More Details</a>
+				</div>
+				<div class="card-reveal">
+			        <span class="card-title grey-text text-darken-4">More on Mutual Funds<i class="material-icons right">close</i></span>
+			        <p>A tax-advantaged way to save for retirement. Both traditional and Roth IRAs are available, offering different tax advantages. Investors may select from a range of funding options.</p>
+			   </div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m12">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title activator">Mutual Funds</span>
+					<p>Mutual funds can be an effective part of your investment portfolio, whether you have a short time horizon or want to build wealth over time. When you invest in a mutual fund, you have the potential to benefit from "strength in numbers" as you join thousands of other people with similar financial goals whose money the investment company has pooled to invest in a portfolio of stocks, bonds or other securities. Investments in the fund are selected and monitored by a professional portfolio manager who decides when to buy and sell stocks, bonds or other securities, based on the fund’s objective.</p>
+				</div>
+				<div class="card-action">
+				  	<a href="" class="activator">More Details</a>
+				</div>
+				<div class="card-reveal">
+			        <span class="card-title grey-text text-darken-4">More on Mutual Funds<i class="material-icons right">close</i></span>
+			        <p>Make use of the company's policy to match a part of your savings, put your savings into your 401K and keep it tax free!</p>
+			   </div>
 			</div>
 		</div>
 	</div>

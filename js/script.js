@@ -2,6 +2,18 @@
 // also include ngRoute for all our routing needs
 var scotchApp = angular.module('scotchApp', ['ngRoute']);
 
+scotchApp.directive('myDirective1', function() {
+    return {
+        controller: 'chart-controller'
+    };
+});
+
+scotchApp.directive('myDirective2', function() {
+    return {
+        controller: 'savings-chart-controller'
+    };
+});
+
 // configure our routes
 scotchApp.config(function($routeProvider) {
     $routeProvider
@@ -303,6 +315,48 @@ scotchApp.controller('contactController', function($scope) {
 
 scotchApp.controller('loginController', function ($scope) {
     $scope.message = 'login page';
+});
+
+scotchApp.controller('savings-chart-controller', function ($scope, $rootScope) {
+    console.log("error is here");
+    google.charts.setOnLoadCallback($rootScope.savings_monthly);
+    google.charts.setOnLoadCallback($rootScope.savings_weekly);
+    $rootScope.savings_monthly = function () {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Food', 205],
+          ['Beverages', 20],
+          ['Commute',  75],
+          ['Clothes', 250],
+          ['Electronics', 70],
+          ['Travel', 250],
+        ]);
+
+        var options = {
+            'chartArea': {'width': '100%', 'height': '80%'},
+            pieHole: 0.4,
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('savingsMonthly'));
+        chart.draw(data, options);
+    }
+    $rootScope.savings_weekly = function () {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Food', 200],
+          ['Beverages', 20],
+          ['Commute',  754],
+          ['Clothes', 250],
+          ['Electronics', 70],
+          ['Travel', 250],
+        ]);
+
+        var options = {
+            'chartArea': {'width': '100%', 'height': '80%'},
+            pieHole: 0.4,
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('savingsWeekly'));
+        chart.draw(data, options);
+    }
 });
 
 scotchApp.controller('chart-controller', function ($scope, $rootScope) {
