@@ -70,6 +70,11 @@ scotchApp.config(function($routeProvider) {
         .when('/ratings', {
             templateUrl : 'pages/ratings.html',
             controller : 'mainController'
+        })
+
+        .when('/expenses', {
+            templateUrl : 'pages/expenses.html',
+            controller : 'mainController'
         });
 
 
