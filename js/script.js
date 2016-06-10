@@ -19,14 +19,8 @@ scotchApp.config(function($routeProvider) {
     $routeProvider
 
         // route for the home page
-        .when('/', {
+        .when('/home', {
             templateUrl : 'pages/home.html',
-            controller  : 'mainController'
-        })
-
-        // route for the landing page
-        .when('/', {
-            templateUrl : 'pages/landing.html',
             controller  : 'mainController'
         })
 
