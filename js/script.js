@@ -24,6 +24,12 @@ scotchApp.config(function($routeProvider) {
             controller  : 'mainController'
         })
 
+        // route for the landing page
+        .when('/', {
+            templateUrl : 'pages/landing.html',
+            controller  : 'mainController'
+        })
+
         // route for the about page
         .when('/about', {
             templateUrl : 'pages/about.html',
@@ -321,7 +327,7 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
             url: "http://textbelt.com/text",
             //processData: false,
             //data: "number=6173730582 message=This is a test message",         
-            data: {"number":"6173730582","message":"This is a test message!"},
+            data: {"number":"6173730582","message":"Error is here"},
             //data: ,
 
             success:function(response)

@@ -72,6 +72,10 @@ dir.col.s6.m6 {
     margin-bottom: 0px;
 }
 
+.panel {
+  background-color: #f8f8f8; 
+}
+
 /* body {
   background: url(background-1.jpeg);
 } */
