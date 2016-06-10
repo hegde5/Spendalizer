@@ -78,6 +78,9 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
         // Tooltip animation
         $(document).ready(function(){
             $('.tooltipped').tooltip({delay: 50});
+            $('.tooltipped').on('click',function(){
+                $(this).trigger('mouseleave');
+            });
         });
         // select animation
         $(document).ready(function() {
@@ -87,6 +90,8 @@ scotchApp.controller('mainController', function($scope, $rootScope) {
         $(document).ready(function(){
             $('.parallax').parallax();
         });
+        
+        
     });
 
     // create a message to display in our view    
